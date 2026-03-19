@@ -1,9 +1,10 @@
 import "./App.css";
+import Body from "./components/Body";
 
 function App() {
   return (
     <>
-      <div className="main text-4xl font-bold text-green-600 capitalize text-center"> hello world</div>
+      <Body />
     </>
   );
 }
