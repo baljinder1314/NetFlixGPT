@@ -3,7 +3,11 @@
     - Create-react-app with vite
     - Tailwindcss Configuration
     - Header
+    - Routing
     - Login form
+    - Sign up page
+    - Form validation
+    - useReff hook
 
 # Feature
 

@@ -1,69 +1,135 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Header from "../header/Header";
+import { loginValidation } from "../../utils/validationOfLogin";
+import { supabase } from "../../utils/supabaseConfiguration";
 
 const Login = () => {
   const [signIn, setSignIn] = useState(true);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const email = useRef(null);
+  const password = useRef(null);
 
   const handleSignUp = () => {
     setSignIn((prev) => !prev);
+    setErrorMsg(""); // reset error on toggle
   };
+
+  const handleLoginBtn = async () => {
+    const message = loginValidation(
+      email.current.value,
+      password.current.value,
+    );
+    setErrorMsg(message);
+
+    if (!signIn) {
+      //Login
+      setIsLoading(true);
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email.current.value,
+        password: password.current.value,
+      });
+      setIsLoading(false);
+      console.log(data);
+    } else {
+      //Sign up
+      setIsLoading(true);
+      const { error } = await supabase.auth.signUp({
+        email: email.current.value,
+        password: password.current.value,
+      });
+      setIsLoading(false);
+      
+    }
+  };
+
   return (
-    <div className="">
+    <div className="relative min-h-screen">
       <Header />
 
-      <div className="backGroundImage  w-full absolute bg-black h-screen opacity-55 "></div>
-      <div class="bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/7ea4545e-42d3-4ebf-82fd-0e1984dc6375/web/IN-en-20260316-TRIFECTA-perspective_789c5633-3949-4708-8e6c-8ddfd22ed696_large.jpg')] bg-cover bg-center h-screen"></div>
+      {/* Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/7ea4545e-42d3-4ebf-82fd-0e1984dc6375/web/IN-en-20260316-TRIFECTA-perspective_789c5633-3949-4708-8e6c-8ddfd22ed696_large.jpg')] bg-cover bg-center w-full h-full"></div>
+        <div className="absolute inset-0 bg-black/70"></div>
+      </div>
 
-      <div className="absolute top-30 borde flex justify-center w-full ">
+      {/* Form */}
+      <div className="flex items-center justify-center min-h-screen px-4">
         <form
-          action="#"
-          className="
-        flex flex-col bg-black/70 border-4 px-15 py-15 w-[28%]"
+          onSubmit={(e) => e.preventDefault()}
+          className="w-full max-w-md bg-black/80 rounded p-6 sm:p-10"
         >
-          <h1 className="text-4xl font-semibold text-white mb-5">
+          <h1 className="text-3xl font-semibold text-white mb-6">
             {signIn ? "Sign Up" : "Login"}
           </h1>
+
           {signIn && (
             <input
               type="text"
               placeholder="Name"
-              className="bg-black/70 text-white h-6 w-full px-8 py-6 rounded border border-gray-500 focus:outline-none mb-4  placeholder:text-[1.2rem]"
+              className="w-full bg-black/70 text-white px-4 py-3 rounded border border-gray-500 mb-4 focus:ring-2 focus:ring-red-600"
             />
           )}
+
+          {/* Email */}
           <input
+            ref={email}
             type="text"
             placeholder="Email"
-            className="bg-black/70 text-white h-6 w-full px-8 py-6 rounded border border-gray-500 focus:outline-none mb-4  placeholder:text-[1.2rem]"
+            className={`w-full bg-black/70 text-white px-4 py-3 rounded border mb-4 focus:ring-2 focus:ring-red-600 ${
+              errorMsg ? "border-red-500" : "border-gray-500"
+            }`}
           />
+
+          {/* Password */}
           <input
+            ref={password}
             type="password"
             placeholder="Password"
-            className="bg-black/70 text-white h-6 w-full px-8 py-6 rounded border border-gray-500 focus:outline-none mb-9 placeholder:text-[1.2rem] "
+            className={`w-full bg-black/70 text-white px-4 py-3 rounded border mb-2 focus:ring-2 focus:ring-red-600 ${
+              errorMsg ? "border-red-500" : "border-gray-500"
+            }`}
           />
-          <button className="px-4 border-none py-3  text-white bg-[#e50914] rounded">
-            {signIn ? "Sign Up" : "Login"}
+
+          {/* ❌ Error Message */}
+          {errorMsg && (
+            <p className="text-red-500 text-sm mb-4 font-semibold">
+              {errorMsg}
+            </p>
+          )}
+
+          <button
+            type="submit"
+            onClick={handleLoginBtn}
+            className="w-full py-3 text-white bg-[#e50914] rounded font-semibold hover:bg-red-700 transition mt-8"
+          >
+            {signIn
+              ? isLoading
+                ? "Loading..."
+                : "Sign Up"
+              : isLoading
+                ? `Loading...`
+                : `Login`}
           </button>
-          <div className="flex justify-between my-2">
-            <div className="flex gap-1">
+
+          <div className="flex justify-between mt-4 text-sm text-gray-400">
+            <label className="flex items-center gap-2">
               <input type="checkbox" />
-              <p className="text-gray-500 font-semibold">Remember me</p>
-            </div>
-            <p className="text-gray-500 font-semibold">Need Helps</p>
+              Remember me
+            </label>
+            <p>Need Help?</p>
           </div>
-          <div className="text-gray-500 pt-13">
-            <p className="capitalize text-[0.98rem] font-semibold mb-4.5 ">
-              {signIn ? "Already Registered? " : " new to netflix?"}
+
+          <div className="text-gray-400 mt-6 text-sm">
+            <p>
+              {signIn ? "Already Registered?" : "New to Netflix?"}
               <span
-                className="text-white font-semibold cursor-pointer ml-2"
+                className="text-white cursor-pointer ml-2"
                 onClick={handleSignUp}
               >
                 {signIn ? "Login" : "Sign Up"}
-              </span>{" "}
-            </p>
-            <p className="text-[0.87rem] font-semibold">
-              this page is protected by google reCAPTCHA to ensure you're not a
-              bot.
-              <span className="text-blue-700"> learn more</span>
+              </span>
             </p>
           </div>
         </form>
