@@ -1,0 +1,10 @@
+export const ACCESS_TOKEN =
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMWFkMzM1NmVjMDYxMjUzYjVmYjRlZmZhZWY3ZTUyOCIsIm5iZiI6MTc3Mzk5OTIxNy4wMTQwMDAyLCJzdWIiOiI2OWJkMTQ3MTEwMjI5NjkwMTE1ZmI1MGUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.IqbZkj7N5z_TczIXbpkwhpbBSGLnQ6oVcPjzucXeSoE";
+
+export const API_OPTION = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMWFkMzM1NmVjMDYxMjUzYjVmYjRlZmZhZWY3ZTUyOCIsIm5iZiI6MTc3Mzk5OTIxNy4wMTQwMDAyLCJzdWIiOiI2OWJkMTQ3MTEwMjI5NjkwMTE1ZmI1MGUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.IqbZkj7N5z_TczIXbpkwhpbBSGLnQ6oVcPjzucXeSoE'
+  }
+};
