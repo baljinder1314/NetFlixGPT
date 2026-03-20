@@ -2,8 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Header from "../header/Header";
 import { loginValidation } from "../../utils/validationOfLogin";
 import { supabase } from "../../utils/supabaseConfiguration";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { addUser } from "../../slices/userSlice";
 
 const Login = () => {
@@ -11,7 +10,6 @@ const Login = () => {
   const [signIn, setSignIn] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
 
   const email = useRef(null);
   const password = useRef(null);
@@ -53,7 +51,6 @@ const Login = () => {
       dispatch(addUser(data.user));
 
       // ✅ Navigate only on success
-      navigate("/browse");
     } else {
       // ✅ SIGN UP
       const { data, error } = await supabase.auth.signUp({
@@ -70,11 +67,8 @@ const Login = () => {
 
       // Optional: auto login after signup
       dispatch(addUser(data.user));
-
-      navigate("/browse");
     }
   };
-
 
   return (
     <div className="relative min-h-screen">

@@ -1,16 +1,39 @@
-import React from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeUser } from "../../slices/userSlice";
+import { addUser, removeUser } from "../../slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "../../utils/supabaseConfiguration";
+import { loading, notLoading } from "../../slices/isLoading";
 
 function Header() {
   const user = useSelector((state) => state.user);
+  const data = useSelector((state) => state.load);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleSignOut = () => {
-    dispatch(removeUser());
-    navigate("/");
+
+  const handleSignOut = async () => {
+    dispatch(loading(true));
+    await supabase.auth.signOut();
+    dispatch(notLoading(false));
   };
+
+  useEffect(() => {
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        if (session?.user) {
+          dispatch(addUser(session.user));
+          navigate("/browse");
+        } else {
+          dispatch(removeUser());
+          navigate("/");
+        }
+      },
+    );
+
+    return () => {
+      listener.subscription.unsubscribe();
+    };
+  }, []);
   return (
     <div className="absolute z-10  flex justify-between  w-full py-10 px-20">
       <img
@@ -23,7 +46,7 @@ function Header() {
           onClick={handleSignOut}
           className="font-bold text-xl cursor-pointer"
         >
-          Sign Out
+          {data ? "Sign Out..." : "Sign Out"}
         </div>
       )}
     </div>
