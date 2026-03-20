@@ -8,6 +8,10 @@
     - Sign up page
     - Form validation
     - useReff hook
+    - connect with supabase
+    - made login/signUp logic
+    - create redux Store with slice
+    
 
 # Feature
 

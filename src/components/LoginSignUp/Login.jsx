@@ -1,12 +1,17 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header from "../header/Header";
 import { loginValidation } from "../../utils/validationOfLogin";
 import { supabase } from "../../utils/supabaseConfiguration";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addUser } from "../../slices/userSlice";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [signIn, setSignIn] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const email = useRef(null);
   const password = useRef(null);
@@ -21,28 +26,55 @@ const Login = () => {
       email.current.value,
       password.current.value,
     );
-    setErrorMsg(message);
+
+    if (message) {
+      setErrorMsg(message);
+      return;
+    }
+
+    setErrorMsg("");
+    setIsLoading(true);
 
     if (!signIn) {
-      //Login
-      setIsLoading(true);
+      // ✅ LOGIN
       const { data, error } = await supabase.auth.signInWithPassword({
         email: email.current.value,
         password: password.current.value,
       });
+
       setIsLoading(false);
-      console.log(data);
+
+      if (error) {
+        setErrorMsg(error.message);
+        return;
+      }
+
+      // ✅ Store user in Redux
+      dispatch(addUser(data.user));
+
+      // ✅ Navigate only on success
+      navigate("/browse");
     } else {
-      //Sign up
-      setIsLoading(true);
-      const { error } = await supabase.auth.signUp({
+      // ✅ SIGN UP
+      const { data, error } = await supabase.auth.signUp({
         email: email.current.value,
         password: password.current.value,
       });
+
       setIsLoading(false);
-      
+
+      if (error) {
+        setErrorMsg(error.message);
+        return;
+      }
+
+      // Optional: auto login after signup
+      dispatch(addUser(data.user));
+
+      navigate("/browse");
     }
   };
+
 
   return (
     <div className="relative min-h-screen">
