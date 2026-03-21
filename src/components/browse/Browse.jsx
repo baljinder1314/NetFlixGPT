@@ -6,6 +6,7 @@ import SecondContainer from "../secondContainer/SecondContainer";
 import useUpcomingMovies from "../../customHooks/useUpcomingMovies";
 import usePopularMovies from "../../customHooks/usePopularMovies";
 import useTopRatedMovies from "../../customHooks/useTopRatedMovies";
+import GptSearch from "../gptSearch/GptSearch";
 
 function Browse() {
   useFetchMovies();
@@ -14,16 +15,23 @@ function Browse() {
   useTopRatedMovies();
 
   const load = useSelector((state) => state.load);
+  const toggle = useSelector((state) => state.gptSearch.gptToggle);
 
   return (
     <>
       <Header />
 
-      <FirstContainer />
-      <SecondContainer />
+      {toggle ? (
+        <GptSearch />
+      ) : (
+        <>
+          <FirstContainer />
+          <SecondContainer />
+        </>
+      )}
 
       {load && (
-        <div className="text-center text-4xl text-green-600">loading...</div>
+        <div className="text-center text-4xl text-green-600 h-screen justify-center items-center">loading...</div>
       )}
     </>
   );

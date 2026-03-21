@@ -4,12 +4,16 @@ import { addUser, removeUser } from "../../slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../utils/supabaseConfiguration";
 import { loading, notLoading } from "../../slices/isLoading";
+import { toggle } from "../../slices/gptSlice";
+import { SUPORTED_LANGUAGES } from "../../utils/constentsForMovieApi";
+import { changeLanguage } from "../../slices/langSlice";
 
 function Header() {
   const user = useSelector((state) => state.user);
   const data = useSelector((state) => state.load);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const toggleValue = useSelector((state) => state.gptSearch.gptToggle);
 
   const handleSignOut = async () => {
     dispatch(loading(true));
@@ -34,6 +38,14 @@ function Header() {
       listener.subscription.unsubscribe();
     };
   }, []);
+
+  const handleToggelGpt = () => {
+    dispatch(toggle());
+  };
+
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
   return (
     <div className="absolute z-100  flex justify-between  w-full py-10 px-20">
       <img
@@ -42,11 +54,36 @@ function Header() {
         className="w-32 relative "
       />
       {user && (
-        <div
-          onClick={handleSignOut}
-          className="font-bold text-xl cursor-pointer relative z-10 text-white border px-10 py-2 rounded  bg-gray-500/30"
-        >
-          {data ? "Sign Out..." : "Sign Out"}
+        <div className="flex gap-4 ">
+          {toggleValue && (
+            <select
+              onChange={handleLanguageChange}
+              className="text-white bg-black px-4 font-semibold rounded"
+            >
+              {SUPORTED_LANGUAGES.map((lang) => (
+                <option
+                  key={lang.identifier}
+                  className="px-2"
+                  value={lang.identifier}
+                >
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
+
+          <button
+            className="text-xl py-1  px-8 font-semibold capitalize border-none rounded bg-white text-black hover:opacity-80 relative z-1000"
+            onClick={handleToggelGpt}
+          >
+            {toggleValue ? "Home":"GPT Search"}
+          </button>
+          <div
+            onClick={handleSignOut}
+            className="font-bold text-xl cursor-pointer relative z-10 text-white border px-10 py-2 rounded  bg-gray-500/30"
+          >
+            {data ? "Sign Out..." : "Sign Out"}
+          </div>
         </div>
       )}
     </div>

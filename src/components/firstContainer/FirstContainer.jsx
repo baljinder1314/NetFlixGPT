@@ -6,9 +6,9 @@ import { useSelector } from "react-redux";
 function FirstContainer() {
   const movies = useSelector((state) => state.movie);
 
-  if (movies.latestMovies === null) return;
+  if (movies.topRatedMovies === null) return;
 
-  const { original_title, overview ,id} = movies.latestMovies[0];
+  const { original_title, overview ,id} = movies.topRatedMovies[0];
 
   return (
     <>

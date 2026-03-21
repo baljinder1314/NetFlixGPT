@@ -4,6 +4,7 @@ import { loginValidation } from "../../utils/validationOfLogin";
 import { supabase } from "../../utils/supabaseConfiguration";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../slices/userSlice";
+import { BG_IMAGE } from "../../utils/constentsForMovieApi";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -76,7 +77,11 @@ const Login = () => {
 
       {/* Background */}
       <div className="absolute inset-0 -z-10">
-        <div className="bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/7ea4545e-42d3-4ebf-82fd-0e1984dc6375/web/IN-en-20260316-TRIFECTA-perspective_789c5633-3949-4708-8e6c-8ddfd22ed696_large.jpg')] bg-cover bg-center w-full h-full"></div>
+        <img
+          src={BG_IMAGE}
+          className=" bg-cover bg-center w-full h-full"
+          alt=""
+        />
         <div className="absolute inset-0 bg-black/70"></div>
       </div>
 

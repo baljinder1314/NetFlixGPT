@@ -6,6 +6,8 @@ function SecondContainer() {
   const movie = useSelector((state) => state.movie);
   if (movie.latestMovies === null) return;
   if (movie.upcomingMovies === null) return;
+  if (movie.popularMovies === null) return;
+  if (movie.topRatedMovies === null) return;
   const { latestMovies, upcomingMovies, popularMovies, topRatedMovies } = movie;
 
   return (
