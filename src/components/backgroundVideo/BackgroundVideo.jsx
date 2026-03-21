@@ -8,6 +8,10 @@ function BackgroundVideo({ id }) {
   return (
     <div className="  absolute inset-0 z-0">
       <iframe
+        autoPlay
+        muted
+        loop
+        playsInline
         className=" aspect-video"
         src={`https://www.youtube.com/embed/${movieTrailer?.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`}
         title="YouTube video player"

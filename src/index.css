@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+.movieScrollBar::-webkit-scrollbar {
+  height: 8px;
+}
+
+.movieScrollBar::-webkit-scrollbar-track {
+  background: #000;
+}
+
+.movieScrollBar::-webkit-scrollbar-thumb {
+  background: #000;
+}

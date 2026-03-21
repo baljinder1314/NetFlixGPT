@@ -3,9 +3,15 @@ import FirstContainer from "../firstContainer/FirstContainer";
 import Header from "../header/Header";
 import { useSelector } from "react-redux";
 import SecondContainer from "../secondContainer/SecondContainer";
+import useUpcomingMovies from "../../customHooks/useUpcomingMovies";
+import usePopularMovies from "../../customHooks/usePopularMovies";
+import useTopRatedMovies from "../../customHooks/useTopRatedMovies";
 
 function Browse() {
   useFetchMovies();
+  useUpcomingMovies();
+  usePopularMovies();
+  useTopRatedMovies();
 
   const load = useSelector((state) => state.load);
 
@@ -13,7 +19,7 @@ function Browse() {
     <>
       <Header />
 
-      <FirstContainer  />
+      <FirstContainer />
       <SecondContainer />
 
       {load && (
