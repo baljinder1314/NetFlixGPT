@@ -1,6 +1,4 @@
-import React from "react";
-import MovieCard from "../movieCard/MovieCard";
-import { useSelector } from "react-redux";
+import MovieCard from '../movieCard/MovieCard';
 
 function MovieList({ title, movie }) {
   return (

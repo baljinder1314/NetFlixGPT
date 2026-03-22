@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 .movieScrollBar::-webkit-scrollbar {
   height: 8px;

@@ -1,15 +1,15 @@
-import { useEffect, useRef, useState } from "react";
-import Header from "../header/Header";
-import { loginValidation } from "../../utils/validationOfLogin";
-import { supabase } from "../../utils/supabaseConfiguration";
-import { useDispatch } from "react-redux";
-import { addUser } from "../../slices/userSlice";
-import { BG_IMAGE } from "../../utils/constentsForMovieApi";
+import {  useRef, useState } from 'react';
+import Header from '../header/Header';
+import { loginValidation } from '../../utils/validationOfLogin';
+import { supabase } from '../../utils/supabaseConfiguration';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../../slices/userSlice';
+import { BG_IMAGE } from '../../utils/constentsForMovieApi';
 
 const Login = () => {
   const dispatch = useDispatch();
   const [signIn, setSignIn] = useState(true);
-  const [errorMsg, setErrorMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const email = useRef(null);
@@ -17,13 +17,13 @@ const Login = () => {
 
   const handleSignUp = () => {
     setSignIn((prev) => !prev);
-    setErrorMsg(""); // reset error on toggle
+    setErrorMsg(''); // reset error on toggle
   };
 
   const handleLoginBtn = async () => {
     const message = loginValidation(
       email.current.value,
-      password.current.value,
+      password.current.value
     );
 
     if (message) {
@@ -31,7 +31,7 @@ const Login = () => {
       return;
     }
 
-    setErrorMsg("");
+    setErrorMsg('');
     setIsLoading(true);
 
     if (!signIn) {
@@ -92,7 +92,7 @@ const Login = () => {
           className="w-full max-w-md bg-black/80 rounded p-6 sm:p-10"
         >
           <h1 className="text-3xl font-semibold text-white mb-6">
-            {signIn ? "Sign Up" : "Login"}
+            {signIn ? 'Sign Up' : 'Login'}
           </h1>
 
           {signIn && (
@@ -109,7 +109,7 @@ const Login = () => {
             type="text"
             placeholder="Email"
             className={`w-full bg-black/70 text-white px-4 py-3 rounded border mb-4 focus:ring-2 focus:ring-red-600 ${
-              errorMsg ? "border-red-500" : "border-gray-500"
+              errorMsg ? 'border-red-500' : 'border-gray-500'
             }`}
           />
 
@@ -119,7 +119,7 @@ const Login = () => {
             type="password"
             placeholder="Password"
             className={`w-full bg-black/70 text-white px-4 py-3 rounded border mb-2 focus:ring-2 focus:ring-red-600 ${
-              errorMsg ? "border-red-500" : "border-gray-500"
+              errorMsg ? 'border-red-500' : 'border-gray-500'
             }`}
           />
 
@@ -137,8 +137,8 @@ const Login = () => {
           >
             {signIn
               ? isLoading
-                ? "Loading..."
-                : "Sign Up"
+                ? 'Loading...'
+                : 'Sign Up'
               : isLoading
                 ? `Loading...`
                 : `Login`}
@@ -149,17 +149,17 @@ const Login = () => {
               <input type="checkbox" />
               Remember me
             </label>
-            <p>Need Help?</p>
+            <p>Need Help?</p>9
           </div>
 
           <div className="text-gray-400 mt-6 text-sm">
             <p>
-              {signIn ? "Already Registered?" : "New to Netflix?"}
+              {signIn ? 'Already Registered?' : 'New to Netflix?'}
               <span
                 className="text-white cursor-pointer ml-2"
                 onClick={handleSignUp}
               >
-                {signIn ? "Login" : "Sign Up"}
+                {signIn ? 'Login' : 'Sign Up'}
               </span>
             </p>
           </div>

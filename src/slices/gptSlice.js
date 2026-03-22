@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const gptSearch = createSlice({
-  name: "gpt",
+  name: 'gpt',
   initialState: {
     gptToggle: false,
   },

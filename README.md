@@ -11,7 +11,6 @@
     - connect with supabase
     - made login/signUp logic
     - create redux Store with slice
-    
 
 # Feature
 

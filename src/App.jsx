@@ -1,7 +1,7 @@
-import "./App.css";
-import Body from "./components/Body";
-import { Provider } from "react-redux";
-import store from "./store/store";
+import './App.css';
+import Body from './components/Body';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 function App() {
   return (

@@ -1,15 +1,15 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "./LoginSignUp/Login";
-import Browse from "./browse/Browse";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Login from './LoginSignUp/Login';
+import Browse from './browse/Browse';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Login />,
   },
 
   {
-    path: "/browse",
+    path: '/browse',
     element: <Browse />,
   },
 ]);

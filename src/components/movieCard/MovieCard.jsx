@@ -1,5 +1,5 @@
-import React from "react";
-import { IMAGE_CDN_URL } from "../../utils/constentsForMovieApi";
+import React from 'react';
+import { IMAGE_CDN_URL } from '../../utils/constentsForMovieApi';
 
 function MovieCard({ image, title }) {
   return (

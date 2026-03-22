@@ -1,6 +1,6 @@
-import React from "react";
-import MovieList from "../movieList/MovieList";
-import { useSelector } from "react-redux";
+import React from 'react';
+import MovieList from '../movieList/MovieList';
+import { useSelector } from 'react-redux';
 
 function SecondContainer() {
   const movie = useSelector((state) => state.movie);
@@ -15,7 +15,7 @@ function SecondContainer() {
       <div className="relative -top-60 z-100">
         <MovieList title={`Now Playing`} movie={latestMovies} />
         <MovieList title={`Popular`} movie={popularMovies} />
-        <MovieList title={`Top Rated`}  movie={topRatedMovies}/>
+        <MovieList title={`Top Rated`} movie={topRatedMovies} />
         <MovieList title={`Upcoming `} movie={upcomingMovies} />
         {/* <MovieList title={`Romantic`} /> */}
       </div>

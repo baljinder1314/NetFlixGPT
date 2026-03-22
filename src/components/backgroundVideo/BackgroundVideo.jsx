@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import useMovieTrailer from "../../customHooks/useMovieTrailer";
+import { useSelector } from 'react-redux';
+import useMovieTrailer from '../../customHooks/useMovieTrailer';
 
 function BackgroundVideo({ id }) {
   const movieTrailer = useSelector((state) => state.movie?.movieTrailer);

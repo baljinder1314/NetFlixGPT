@@ -1,12 +1,12 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addUser, removeUser } from "../../slices/userSlice";
-import { useNavigate } from "react-router-dom";
-import { supabase } from "../../utils/supabaseConfiguration";
-import { loading, notLoading } from "../../slices/isLoading";
-import { toggle } from "../../slices/gptSlice";
-import { SUPORTED_LANGUAGES } from "../../utils/constentsForMovieApi";
-import { changeLanguage } from "../../slices/langSlice";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUser, removeUser } from '../../slices/userSlice';
+import { useNavigate } from 'react-router-dom';
+import { supabase } from '../../utils/supabaseConfiguration';
+import { loading, notLoading } from '../../slices/isLoading';
+import { toggle } from '../../slices/gptSlice';
+import { SUPORTED_LANGUAGES } from '../../utils/constentsForMovieApi';
+import { changeLanguage } from '../../slices/langSlice';
 
 function Header() {
   const user = useSelector((state) => state.user);
@@ -26,18 +26,18 @@ function Header() {
       (event, session) => {
         if (session?.user) {
           dispatch(addUser(session.user));
-          navigate("/browse");
+          navigate('/browse');
         } else {
           dispatch(removeUser());
-          navigate("/");
+          navigate('/');
         }
-      },
+      }
     );
 
     return () => {
       listener.subscription.unsubscribe();
     };
-  }, []);
+  }, [dispatch,navigate]);
 
   const handleToggelGpt = () => {
     dispatch(toggle());
@@ -76,13 +76,13 @@ function Header() {
             className="text-xl py-1  px-8 font-semibold capitalize border-none rounded bg-white text-black hover:opacity-80 relative z-1000"
             onClick={handleToggelGpt}
           >
-            {toggleValue ? "Home":"GPT Search"}
+            {toggleValue ? 'Home' : 'GPT Search'}
           </button>
           <div
             onClick={handleSignOut}
             className="font-bold text-xl cursor-pointer relative z-10 text-white border px-10 py-2 rounded  bg-gray-500/30"
           >
-            {data ? "Sign Out..." : "Sign Out"}
+            {data ? 'Sign Out...' : 'Sign Out'}
           </div>
         </div>
       )}

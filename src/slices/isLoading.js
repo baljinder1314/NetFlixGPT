@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const isLoading = createSlice({
-  name: "isLoading",
+  name: 'isLoading',
   initialState: false,
 
   reducers: {
