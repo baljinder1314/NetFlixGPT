@@ -7,11 +7,10 @@ import { addTopRatedMovie } from '../slices/movieSlice';
 const useTopRatedMovies = () => {
   const dispatch = useDispatch();
 
-  
   useEffect(() => {
     const fetchMoviesData = async () => {
       dispatch(loading());
-  
+
       try {
         const response = await fetch(
           'https://api.themoviedb.org/3/movie/top_rated',

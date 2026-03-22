@@ -5,7 +5,7 @@ import { API_OPTION } from '../utils/constentsForMovieApi';
 
 const useMovieTrailer = (id) => {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     const fetchMovieTrailer = async () => {
       const movieTrailer = await fetch(
@@ -13,7 +13,7 @@ const useMovieTrailer = (id) => {
         API_OPTION
       );
       const resTailer = await movieTrailer.json();
-  
+
       const filterData = resTailer.results.filter(
         (movie) => movie.type === 'Trailer'
       );
@@ -22,7 +22,7 @@ const useMovieTrailer = (id) => {
       dispatch(addMovieTrailer(trailer));
     };
     fetchMovieTrailer();
-  }, [dispatch,id]);
+  }, [dispatch, id]);
 };
 
 export default useMovieTrailer;

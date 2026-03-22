@@ -1,4 +1,4 @@
-import {  useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Header from '../header/Header';
 import { loginValidation } from '../../utils/validationOfLogin';
 import { supabase } from '../../utils/supabaseConfiguration';

@@ -7,11 +7,10 @@ import { addPopularMovie } from '../slices/movieSlice';
 const usePopularMovies = () => {
   const dispatch = useDispatch();
 
-  
   useEffect(() => {
     const fetchMoviesData = async () => {
       dispatch(loading());
-  
+
       try {
         const response = await fetch(
           'https://api.themoviedb.org/3/movie/popular',

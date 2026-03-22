@@ -37,7 +37,7 @@ function Header() {
     return () => {
       listener.subscription.unsubscribe();
     };
-  }, [dispatch,navigate]);
+  }, [dispatch, navigate]);
 
   const handleToggelGpt = () => {
     dispatch(toggle());
