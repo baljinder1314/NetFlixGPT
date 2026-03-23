@@ -1,12 +1,10 @@
-export const ACCESS_TOKEN =
-  'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMWFkMzM1NmVjMDYxMjUzYjVmYjRlZmZhZWY3ZTUyOCIsIm5iZiI6MTc3Mzk5OTIxNy4wMTQwMDAyLCJzdWIiOiI2OWJkMTQ3MTEwMjI5NjkwMTE1ZmI1MGUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.IqbZkj7N5z_TczIXbpkwhpbBSGLnQ6oVcPjzucXeSoE';
+export const ACCESS_TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
 export const API_OPTION = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMWFkMzM1NmVjMDYxMjUzYjVmYjRlZmZhZWY3ZTUyOCIsIm5iZiI6MTc3Mzk5OTIxNy4wMTQwMDAyLCJzdWIiOiI2OWJkMTQ3MTEwMjI5NjkwMTE1ZmI1MGUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.IqbZkj7N5z_TczIXbpkwhpbBSGLnQ6oVcPjzucXeSoE',
+    Authorization: 'Bearer ' + import.meta.env.VITE_APP_BEARER_TOKEN,
   },
 };
 
@@ -44,6 +42,3 @@ export const SUPORTED_LANGUAGES = [
     name: 'Spanish',
   },
 ];
-
-export const OPEN_AI =
-  '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';
