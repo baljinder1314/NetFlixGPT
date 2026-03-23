@@ -47,7 +47,9 @@ function Header() {
     dispatch(changeLanguage(e.target.value));
   };
   return (
-    <div className={`absolute z-100  flex justify-between items-center w-full py-10 sm:py-6 md:py-10 px-4 sm:px-8 md:px-20  sm:gap-4 ${toggleValue && "flex-col"} md:flex-row gap-5`}>
+    <div
+      className={`absolute z-100  flex justify-between items-center w-full py-10 sm:py-6 md:py-10 px-4 sm:px-8 md:px-20  sm:gap-4 ${toggleValue && 'flex-col'} md:flex-row gap-5`}
+    >
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
         alt="Netflix Logo"

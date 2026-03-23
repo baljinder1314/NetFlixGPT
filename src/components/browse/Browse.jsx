@@ -7,6 +7,7 @@ import useUpcomingMovies from '../../customHooks/useUpcomingMovies';
 import usePopularMovies from '../../customHooks/usePopularMovies';
 import useTopRatedMovies from '../../customHooks/useTopRatedMovies';
 import GptSearch from '../gptSearch/GptSearch';
+import FullMovieDetail from '../fullMovieDetail/FullMovieDetail';
 
 function Browse() {
   useFetchMovies();
@@ -16,6 +17,16 @@ function Browse() {
 
   const load = useSelector((state) => state.load);
   const toggle = useSelector((state) => state.gptSearch.gptToggle);
+  const showDetailedCard = useSelector(
+    (state) => state.fullMovieDetail.showCard
+  );
+
+  const movieDetailIs = useSelector(
+    (state) => state.fullMovieDetail.movieDetail
+  );
+  const movieTrailerDetail = useSelector(
+    (state) => state.fullMovieDetail.trailerOfMovie
+  );
 
   return (
     <>
@@ -34,6 +45,13 @@ function Browse() {
         <div className="text-center text-4xl text-green-600 h-screen justify-center items-center">
           loading...
         </div>
+      )}
+
+      {showDetailedCard && (
+        <FullMovieDetail
+          movieDetailIs={movieDetailIs}
+          movieTrailerDetail={movieTrailerDetail}
+        />
       )}
     </>
   );

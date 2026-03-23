@@ -17,6 +17,7 @@ function GptSearchMovies() {
             original_language={movie.original_language}
             vote_average={movie.vote_average}
             release_date={movie.release_date}
+            fullMovie={movie}
           />
         ))}
       </div>

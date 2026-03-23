@@ -4,6 +4,7 @@ import loadReducer from '../slices/isLoading';
 import movieReducer from '../../src/slices/movieSlice';
 import langReducer from '../slices/langSlice';
 import gptReducer from '../slices/gptSlice';
+import detailReducer from '../slices/fullMovieDetailSlice';
 const store = configureStore({
   reducer: {
     user: userReducer,
@@ -11,6 +12,7 @@ const store = configureStore({
     movie: movieReducer,
     gptSearch: gptReducer,
     lang: langReducer,
+    fullMovieDetail: detailReducer,
   },
 });
 

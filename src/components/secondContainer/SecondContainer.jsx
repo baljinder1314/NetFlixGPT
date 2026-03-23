@@ -17,7 +17,6 @@ function SecondContainer() {
         <MovieList title={`Popular`} movie={popularMovies} />
         <MovieList title={`Top Rated`} movie={topRatedMovies} />
         <MovieList title={`Upcoming `} movie={upcomingMovies} />
-        {/* <MovieList title={`Romantic`} /> */}
       </div>
     </div>
   );

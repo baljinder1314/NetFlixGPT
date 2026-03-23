@@ -14,6 +14,7 @@ function MovieList({ title, movie }) {
                 key={movie.id}
                 title={movie.title}
                 image={movie.poster_path}
+                fullMovie={movie}
               />
             ))}
           </div>
