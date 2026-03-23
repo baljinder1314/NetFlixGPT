@@ -41,12 +41,15 @@ function Browse() {
         </>
       )}
 
+      {/* ✅ CENTERED LOADER */}
       {load && (
-        <div className="text-center flex w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin justify-center items-center">
-          loading...
+        <div className="fixed inset-0 flex flex-col items-center justify-center bg-black/60 z-[9999]">
+          <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+          <p className="mt-4 text-white text-lg">Loading...</p>
         </div>
       )}
 
+      {/* ✅ MOVIE DETAIL MODAL */}
       {showDetailedCard && (
         <FullMovieDetail
           movieDetailIs={movieDetailIs}
