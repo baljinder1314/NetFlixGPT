@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loading, notLoading } from '../slices/isLoading';
 import { useEffect } from 'react';
 import { API_OPTION } from '../utils/constentsForMovieApi';
@@ -6,6 +6,8 @@ import { addUpcomingMovie } from '../slices/movieSlice';
 
 const useUpcomingMovies = () => {
   const dispatch = useDispatch();
+
+  const upcoming = useSelector((state) => state.movie.upcomingMovies);
   useEffect(() => {
     const fetchMoviesData = async () => {
       dispatch(loading());
@@ -23,7 +25,7 @@ const useUpcomingMovies = () => {
         dispatch(notLoading());
       }
     };
-    fetchMoviesData();
+    !upcoming && fetchMoviesData();
   }, [dispatch]);
 };
 

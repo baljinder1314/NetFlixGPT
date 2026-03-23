@@ -9,6 +9,7 @@ import {
 const FullMovieDetail = ({ movieDetailIs, movieTrailerDetail }) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const searchMovieDetails = useSelector((state) => state.movie.searchMovies);
 
   useEffect(() => {
     let isMounted = true;
@@ -43,7 +44,7 @@ const FullMovieDetail = ({ movieDetailIs, movieTrailerDetail }) => {
       }
     };
 
-    fetchMovieDetail();
+    !searchMovieDetails && fetchMovieDetail();
 
     return () => {
       isMounted = false;

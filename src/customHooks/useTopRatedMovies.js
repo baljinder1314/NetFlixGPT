@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loading, notLoading } from '../slices/isLoading';
 import { useEffect } from 'react';
 import { API_OPTION } from '../utils/constentsForMovieApi';
@@ -6,6 +6,7 @@ import { addTopRatedMovie } from '../slices/movieSlice';
 
 const useTopRatedMovies = () => {
   const dispatch = useDispatch();
+  const top_rated = useSelector((state) => state.movie.topRatedMovies);
 
   useEffect(() => {
     const fetchMoviesData = async () => {
@@ -24,7 +25,7 @@ const useTopRatedMovies = () => {
         dispatch(notLoading());
       }
     };
-    fetchMoviesData();
+    !top_rated && fetchMoviesData();
   }, [dispatch]);
 };
 

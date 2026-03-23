@@ -42,7 +42,7 @@ function Browse() {
       )}
 
       {load && (
-        <div className="text-center text-4xl text-green-600 h-screen justify-center items-center">
+        <div className="text-center flex w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin justify-center items-center">
           loading...
         </div>
       )}

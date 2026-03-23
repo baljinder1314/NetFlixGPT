@@ -8,7 +8,6 @@ function GptSearchBar() {
   const langChange = useSelector((state) => state.lang.lang);
   const inputRef = useRef('');
   const dispatch = useDispatch();
-  const loadingSpinner = useSelector((state) => state.load);
 
   const handleGptSearch = async () => {
     // dispatch(loading(true));
