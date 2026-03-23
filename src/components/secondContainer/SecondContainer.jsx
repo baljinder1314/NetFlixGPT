@@ -12,7 +12,7 @@ function SecondContainer() {
 
   return (
     <div className="bg-black">
-      <div className="relative -top-60 z-100">
+      <div className="relative z-10 top-100  md:top-10">
         <MovieList title={`Now Playing`} movie={latestMovies} />
         <MovieList title={`Popular`} movie={popularMovies} />
         <MovieList title={`Top Rated`} movie={topRatedMovies} />

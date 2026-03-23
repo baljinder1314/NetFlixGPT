@@ -47,18 +47,18 @@ function Header() {
     dispatch(changeLanguage(e.target.value));
   };
   return (
-    <div className="absolute z-100  flex justify-between  w-full py-10 px-20">
+    <div className="absolute z-100  flex justify-between items-center w-full py-10 sm:py-6 md:py-10 px-4 sm:px-8 md:px-20  sm:gap-4 flex-col md:flex-row gap-5">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
         alt="Netflix Logo"
-        className="w-32 relative "
+        className="w-24 sm:w-28 md:w-32 relative "
       />
       {user && (
-        <div className="flex gap-4 ">
+        <div className="flex gap-2 sm:gap-3 md:gap-4 flex-wrap justify-end">
           {toggleValue && (
             <select
               onChange={handleLanguageChange}
-              className="text-white bg-black px-4 font-semibold rounded"
+              className="text-xs sm:text-sm md:text-base text-white bg-black px-2 sm:px-3 md:px-4 py-1 sm:py-2 font-semibold rounded"
             >
               {SUPORTED_LANGUAGES.map((lang) => (
                 <option
@@ -73,14 +73,14 @@ function Header() {
           )}
 
           <button
-            className="text-xl py-1  px-8 font-semibold capitalize border-none rounded bg-white text-black hover:opacity-80 relative z-1000"
+            className="text-[0.55rem] sm:text-sm md:text-lg lg:text-xl py-1 px-4 sm:px-6 md:px-8 font-semibold capitalize border-none rounded bg-white text-black hover:opacity-80 relative z-1000 whitespace-nowrap"
             onClick={handleToggelGpt}
           >
             {toggleValue ? 'Home' : 'GPT Search'}
           </button>
           <div
             onClick={handleSignOut}
-            className="font-bold text-xl cursor-pointer relative z-10 text-white border px-10 py-2 rounded  bg-gray-500/30"
+            className="font-bold text-xs sm:text-sm md:text-lg lg:text-xl cursor-pointer relative z-10 text-white border px-3 sm:px-6 md:px-8 lg:px-10 py-1 sm:py-2 rounded bg-gray-500/30 whitespace-nowrap"
           >
             {data ? 'Sign Out...' : 'Sign Out'}
           </div>

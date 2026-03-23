@@ -79,7 +79,7 @@ const Login = () => {
       <div className="absolute inset-0 -z-10">
         <img
           src={BG_IMAGE}
-          className=" bg-cover bg-center w-full h-full"
+          className=" md:bg-cover md:bg-center md:w-full md:h-full "
           alt=""
         />
         <div className="absolute inset-0 bg-black/70"></div>
@@ -89,9 +89,9 @@ const Login = () => {
       <div className="flex items-center justify-center min-h-screen px-4">
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="w-full max-w-md bg-black/80 rounded p-6 sm:p-10"
+          className="w-full max-w-xs sm:max-w-sm md:max-w-md bg-black/80 rounded p-4 sm:p-6 md:p-10"
         >
-          <h1 className="text-3xl font-semibold text-white mb-6">
+          <h1 className="text-2xl sm:text-2xl md:text-3xl font-semibold text-white mb-4 sm:mb-6">
             {signIn ? 'Sign Up' : 'Login'}
           </h1>
 
@@ -99,7 +99,7 @@ const Login = () => {
             <input
               type="text"
               placeholder="Name"
-              className="w-full bg-black/70 text-white px-4 py-3 rounded border border-gray-500 mb-4 focus:ring-2 focus:ring-red-600"
+              className="w-full bg-black/70 text-white px-3 sm:px-4 py-2 sm:py-3 rounded border border-gray-500 mb-3 sm:mb-4 focus:ring-2 focus:ring-red-600 text-sm sm:text-base"
             />
           )}
 
@@ -108,7 +108,7 @@ const Login = () => {
             ref={email}
             type="text"
             placeholder="Email"
-            className={`w-full bg-black/70 text-white px-4 py-3 rounded border mb-4 focus:ring-2 focus:ring-red-600 ${
+            className={`w-full bg-black/70 text-white px-3 sm:px-4 py-2 sm:py-3 rounded border mb-3 sm:mb-4 focus:ring-2 focus:ring-red-600 text-sm sm:text-base ${
               errorMsg ? 'border-red-500' : 'border-gray-500'
             }`}
           />
@@ -118,14 +118,14 @@ const Login = () => {
             ref={password}
             type="password"
             placeholder="Password"
-            className={`w-full bg-black/70 text-white px-4 py-3 rounded border mb-2 focus:ring-2 focus:ring-red-600 ${
+            className={`w-full bg-black/70 text-white px-3 sm:px-4 py-2 sm:py-3 rounded border mb-2 sm:mb-3 focus:ring-2 focus:ring-red-600 text-sm sm:text-base ${
               errorMsg ? 'border-red-500' : 'border-gray-500'
             }`}
           />
 
           {/* ❌ Error Message */}
           {errorMsg && (
-            <p className="text-red-500 text-sm mb-4 font-semibold">
+            <p className="text-red-500 text-xs sm:text-sm mb-3 sm:mb-4 font-semibold">
               {errorMsg}
             </p>
           )}
@@ -133,7 +133,7 @@ const Login = () => {
           <button
             type="submit"
             onClick={handleLoginBtn}
-            className="w-full py-3 text-white bg-[#e50914] rounded font-semibold hover:bg-red-700 transition mt-8"
+            className="w-full py-2 sm:py-3 text-white bg-[#e50914] rounded font-semibold hover:bg-red-700 transition mt-6 sm:mt-8 text-sm sm:text-base"
           >
             {signIn
               ? isLoading
@@ -144,15 +144,15 @@ const Login = () => {
                 : `Login`}
           </button>
 
-          <div className="flex justify-between mt-4 text-sm text-gray-400">
-            <label className="flex items-center gap-2">
+          <div className="flex justify-between mt-3 sm:mt-4 text-xs sm:text-sm text-gray-400 gap-2">
+            <label className="flex items-center gap-2 whitespace-nowrap">
               <input type="checkbox" />
               Remember me
             </label>
-            <p>Need Help?</p>9
+            <p>Need Help?</p>
           </div>
 
-          <div className="text-gray-400 mt-6 text-sm">
+          <div className="text-gray-400 mt-4 sm:mt-6 text-xs sm:text-sm">
             <p>
               {signIn ? 'Already Registered?' : 'New to Netflix?'}
               <span

@@ -14,12 +14,11 @@ function SearchMovies({
   if (!isHide)
     return (
       <div
-        className="card text-white flex flex-col "
-        style={{ width: '15rem' }}
+        className="card text-white flex flex-col w-full sm:w-56 md:w-60 lg:w-64 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition hover:scale-105"
         onClick={() => console.log('kamono nhi hai no no !')}
       >
         <img
-          className="card-img-top w-full"
+          className="card-img-top w-full h-auto rounded-t-lg"
           src={`${IMAGE_CDN_URL}${poster_path}`}
           alt={title}
           onError={(err) => {
@@ -27,22 +26,20 @@ function SearchMovies({
             setIsHide(true);
           }}
         />
-        <div className="card-body space-y-1">
-          <h4 className="card-title text-xl font-semibold">{title}</h4>
-          <h4 className="card-title text-xl font-semibold">
+        <div className="card-body space-y-1 p-3 sm:p-4 bg-black/80 flex-grow">
+          <h4 className="card-title text-sm sm:text-base md:text-lg font-semibold line-clamp-2">
+            {title}
+          </h4>
+          <h4 className="card-title text-xs sm:text-sm md:text-base font-semibold">
             Language: {original_language}
           </h4>
 
-          <div className="container">
-            <div className="row">
-              <p className="text-base">Rating: {vote_average}</p>
-
-              <div className="col-sm-8 metadata px-2">{release_date}</div>
-            </div>
+          <div className="flex flex-col gap-1">
+            <p className="text-xs sm:text-sm">Rating: {vote_average}</p>
+            <p className="text-xs sm:text-sm">{release_date}</p>
           </div>
 
-          <p className="card-text">
-            {' '}
+          <p className="card-text text-xs sm:text-sm line-clamp-3">
             {overview.split(' ').slice(0, 10).join(' ')}
           </p>
         </div>

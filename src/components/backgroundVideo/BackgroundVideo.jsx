@@ -6,13 +6,13 @@ function BackgroundVideo({ id }) {
 
   useMovieTrailer(id);
   return (
-    <div className="  absolute inset-0 z-0">
+    <div className="absolute inset-0 z-0 overflow-hidden">
       <iframe
         autoPlay
         muted
         loop
         playsInline
-        className=" aspect-video"
+        className="absolute inset-0 w-full h-full object-cover md:aspect-video "
         src={`https://www.youtube.com/embed/${movieTrailer?.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
