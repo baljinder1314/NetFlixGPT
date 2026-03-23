@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { API_OPTION } from '../../utils/constentsForMovieApi';
 import {
   fetchTrailerOfMovie,
