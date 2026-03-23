@@ -77,16 +77,15 @@ const Login = () => {
 
       {/* Background */}
       <div className="absolute inset-0 -z-10">
-        <img
-          src={BG_IMAGE}
-          className=" md:bg-cover md:bg-center md:w-full md:h-full "
-          alt=""
-        />
+        <div
+          style={{ backgroundImage: `url(${BG_IMAGE})` }}
+          className="bg-cover bg-center w-full h-full"
+        ></div>
         <div className="absolute inset-0 bg-black/70"></div>
       </div>
 
       {/* Form */}
-      <div className="flex items-center justify-center min-h-screen px-4">
+      <div className="flex flex-col md:flex-row py-20 gap-10 items-center justify-center min-h-screen px-4">
         <form
           onSubmit={(e) => e.preventDefault()}
           className="w-full max-w-xs sm:max-w-sm md:max-w-md bg-black/80 rounded p-4 sm:p-6 md:p-10"
@@ -164,6 +163,45 @@ const Login = () => {
             </p>
           </div>
         </form>
+        <div className=" max-w-sm bg-black/80 text-white p-6 rounded">
+          <h2 className="text-xl font-semibold mb-3">Note</h2>
+
+          <p className="text-sm mb-3">
+            Due to server issues, you may face problems while Creating new
+            Account in.
+          </p>
+
+          <p className="text-sm mb-3">
+            You cannot create a new account. This website doesn't work without
+            VPN if you are in India 🇮🇳
+          </p>
+
+          <p className="text-sm mb-4">Or use demo account:</p>
+
+          <div className="bg-gray-800 p-3 rounded text-sm break-all">
+            <p>
+              <span className="text-gray-400">Email:</span>{' '}
+              <span
+                className="cursor-pointer"
+                onClick={() =>
+                  navigator.clipboard.writeText('simran@gmail.com')
+                }
+              >
+                simran@gmail.com 📋
+              </span>
+            </p>
+
+            <p className="mt-2">
+              <span className="text-gray-400">Password:</span>{' '}
+              <span
+                className="cursor-pointer"
+                onClick={() => navigator.clipboard.writeText('Simran@0099')}
+              >
+                Simran@0099 📋
+              </span>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -10,7 +10,6 @@ function GptSearchBar() {
   const dispatch = useDispatch();
   const loadingSpinner = useSelector((state) => state.load);
   
-  
 
   const handleGptSearch = async () => {
     // dispatch(loading(true));
